@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.example.demo.mapper.TestMapper">
+    <select id="findAll" resultType="TestDO">
+        select *from student
+    </select>
+
+    <insert id="create">
+        insert into student(name,file_name,create_time,update_time ) value(#{name},#(fileName),#(createTime),#(updateTime));
+    </insert>
+</mapper>

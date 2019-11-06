@@ -1,0 +1,17 @@
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.example.demo.dataobject
+  config-location: classpath:mybatis/mybatis-config.xml
+
+spring:
+  application:
+    name: Hello SpringBoot
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8
+    username: root
+    password: 123456
+  jackson:
+    serialization.write_dates_as_timestamps: false
+server:
+  port: 8088
