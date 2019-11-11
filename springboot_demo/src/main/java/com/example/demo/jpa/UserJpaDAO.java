@@ -13,8 +13,8 @@ import java.util.List;
 @Repository
 public interface UserJpaDAO extends JpaRepository<UserDO, Long> {
 
-    List<UserDO> findByName(String name);
+    UserDO findByName(String name);
 
-    UserDO findByNameAndAndPassword(String name, String password);
+    UserDO findByNameAndPassword(String name, String password);
 
 }

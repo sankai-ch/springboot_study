@@ -30,6 +30,9 @@ public enum ErrorCode {
 
     USER_NOT_EXIST("100006","用户不存在"),
 
+    USER_EXIST("100006","用户已存在"),
+
+
     ;
 
     private String code;

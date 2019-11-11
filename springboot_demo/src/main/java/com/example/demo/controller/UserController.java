@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.demo.common.core.RestCommonResult;
 import com.example.demo.dataobject.UserDO;
 import com.example.demo.form.UserForm;
+import com.example.demo.jpa.UserJpaDAO;
 import com.example.demo.manager.UserManager;
 import com.example.demo.service.TokenService;
 import io.swagger.annotations.ApiOperation;
@@ -27,6 +28,9 @@ public class UserController {
     private UserManager userManager;
 
     @Autowired
+    private UserJpaDAO userJpaDAO;
+
+    @Autowired
     private TokenService tokenService;
 
     @PostMapping("/add")
@@ -37,7 +41,7 @@ public class UserController {
 
     @GetMapping("/findByName")
     @ApiOperation(value = "按用户名查找用户", notes = "查找用户")
-    public RestCommonResult<List<UserDO>> findById(@RequestParam @Valid String name) {
+    public RestCommonResult<UserDO> findById(@RequestParam @Valid String name) {
         return new RestCommonResult<>(userManager.findByName(name));
     }
 
@@ -45,7 +49,7 @@ public class UserController {
     @ApiOperation(value = "登录", notes = "登录")
     public RestCommonResult<Boolean> login(@RequestParam String name, @RequestParam String password) {
         JSONObject jsonObject = new JSONObject();
-        UserDO userDO = userManager.findOne(2L);
+        UserDO userDO = userJpaDAO.findByName(name);
         String token = tokenService.getToken(userDO);
         jsonObject.put("token", token);
 

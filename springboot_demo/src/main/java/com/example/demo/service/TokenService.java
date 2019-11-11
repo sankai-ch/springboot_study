@@ -5,7 +5,6 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.example.demo.dataobject.UserDO;
 import org.springframework.stereotype.Service;
 
-import javax.xml.crypto.Data;
 import java.util.Date;
 
 /**

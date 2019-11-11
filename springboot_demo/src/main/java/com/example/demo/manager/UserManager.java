@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -24,6 +25,10 @@ public class UserManager {
     private UserJpaDAO userJpaDAO;
 
     public Boolean createUser(UserForm form) {
+        UserDO user = userJpaDAO.findByName(form.getName());
+        if (!StringUtils.isEmpty(user)) {
+            throw new BizCoreException(ErrorCode.USER_EXIST);
+        }
         UserDO userDO = new UserDO();
         userDO.setName(form.getName());
         userDO.setDescription(form.getDescription());
@@ -33,22 +38,22 @@ public class UserManager {
         return true;
     }
 
-    public List<UserDO> findByName(String name) {
-        List<UserDO> userDOS = userJpaDAO.findByName(name);
+    public UserDO findByName(String name) {
+
+        UserDO userDOS = userJpaDAO.findByName(name);
+        if (userDOS == null) {
+            throw new BizCoreException(ErrorCode.USER_NOT_EXIST);
+        }
         return userDOS;
     }
 
     public Boolean login(String name, String password) {
         String pass = DigestUtils.md5DigestAsHex(password.getBytes());
-        UserDO userDO = userJpaDAO.findByNameAndAndPassword(name, pass);
+        UserDO userDO = userJpaDAO.findByNameAndPassword(name, pass);
         if (userDO == null) {
             throw new BizCoreException(ErrorCode.USER_NOT_EXIST);
         }
         return true;
     }
 
-    public UserDO findOne(Long id){
-        UserDO userDO = userJpaDAO.getOne(id);
-        return userDO;
-    }
 }
