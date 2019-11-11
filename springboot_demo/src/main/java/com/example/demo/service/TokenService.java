@@ -18,7 +18,6 @@ public class TokenService {
         Long currentTime = System.currentTimeMillis() + 60 * 60 * 1000;//一小时有效时间
         Date end = new Date(currentTime);
         String token = "";
-        String name = "nm";
         token = JWT.create().withAudience(String.valueOf(userDO.getId())).withIssuedAt(start).withExpiresAt(end).sign(Algorithm.HMAC256(userDO.getPassword()));
         System.out.println(token);
         return token;
