@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.example.demo.common.annotation.PassToken;
 import com.example.demo.common.core.RestCommonResult;
 import com.example.demo.dataobject.UserDO;
 import com.example.demo.form.UserForm;
@@ -34,6 +35,7 @@ public class UserController {
     private TokenService tokenService;
 
     @PostMapping("/add")
+    @PassToken
     @ApiOperation(value = "添加用户", notes = "添加用户接口")
     public RestCommonResult<Boolean> createUser(@RequestBody @Valid UserForm form) {
         return new RestCommonResult<>(userManager.createUser(form));
@@ -46,6 +48,7 @@ public class UserController {
     }
 
     @GetMapping("/login")
+    @PassToken
     @ApiOperation(value = "登录", notes = "登录")
     public RestCommonResult<Boolean> login(@RequestParam String name, @RequestParam String password) {
         JSONObject jsonObject = new JSONObject();
