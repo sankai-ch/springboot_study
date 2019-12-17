@@ -1,6 +1,7 @@
 package com.example.demo.dao;
 
 import com.example.demo.DemoApplication;
+import com.example.demo.dataobject.TestDO;
 import com.example.demo.dataobject.UserDO;
 import com.example.demo.jpa.UserJpaDAO;
 import javafx.application.Application;
@@ -24,9 +25,8 @@ public class UserDAOTest {
 
     @Test
     public void test() {
-        String s = "2";
-        Long id = Long.valueOf(s);
-        UserDO userDO = userJpaDAO.getOne(id);
-        System.out.println(userDO);
+        TestDO testDO = new TestDO();
+        testDO.setIsTest(true);
+        testDO.getIsTest();
     }
 }

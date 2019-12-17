@@ -20,6 +20,8 @@ import java.util.Date;
 @Api(value = "用户表")
 public class TestDO {
 
+    private Boolean isTest;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(value = "用户ID")

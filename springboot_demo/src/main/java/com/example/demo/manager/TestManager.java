@@ -3,24 +3,20 @@ package com.example.demo.manager;
 import com.example.demo.dataobject.TestDO;
 import com.example.demo.jpa.TestJpaDAO;
 import com.example.demo.mapper.TestMapper;
-import it.sauronsoftware.jave.*;
-import javazoom.jl.decoder.Bitstream;
-import javazoom.jl.decoder.BitstreamException;
-import javazoom.jl.decoder.Header;
+import javafx.scene.media.AudioClip;
 import lombok.extern.slf4j.Slf4j;
-import org.jaudiotagger.audio.mp3.MP3File;
-import org.jaudiotagger.audio.mp3.MP3FileReader;
+import lx.jave.AudioInfo;
+import lx.jave.Encoder;
+import lx.jave.EncoderException;
+import lx.jave.MultimediaInfo;
+import org.apache.el.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import sun.net.www.http.HttpClient;
 
-import javax.sound.sampled.*;
-import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.*;
@@ -72,10 +68,43 @@ public class TestManager {
         return true;
     }
 
-    public boolean ddd() {
-
-        URLConnection connection = null;
+    public boolean ddd() throws IOException {
+        Encoder encoder = new Encoder();
+        long ls = 0;
+        MultimediaInfo m;
         try {
+            File source = new File("https://insurance-h5.oss-cn-hangzhou.aliyuncs.com/darling-app/qa/audio/123123123.mp3");
+            m = encoder.getInfo(source);
+            ls = m.getDuration()/1000;
+            System.out.println(ls);
+
+        } catch (Exception e) {
+            System.out.println("获取音频时长有误：" + e.getMessage());
+        }
+//        URL url = new URL("https://insurance-h5.oss-cn-hangzhou.aliyuncs.com/darling-app/qa/audio/123123123.mp3");
+//        HttpURLConnection urlcon = (HttpURLConnection) url.openConnection();
+//        // 根据响应获取文件大小
+//        int fileLength = urlcon.getContentLength();
+//        System.out.println(fileLength);
+
+//        // 多媒体信息
+//        try {
+//            MultimediaInfo info = encoder.getInfo(file);
+//
+//            long duration = info.getDuration();
+//            System.out.println("视频时长为：" + duration / 1000 + "秒");
+//            // 音频信息
+//            AudioInfo audio = info.getAudio();
+//            int bitRate = audio.getBitRate();  // 比特率
+//            int channels = audio.getChannels();  // 声道
+//            String decoder = audio.getDecoder();  // 解码器
+//            int sRate = audio.getSamplingRate();  // 采样率
+//            System.out.println(duration);
+//            System.out.println("解码器：" + decoder + "，声道：" + channels + "，比特率：" + bitRate + "，采样率：" + sRate);
+//        } catch (EncoderException e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println(url.toExternalForm());
 //            Clip clip = AudioSystem.getClip();
 //            URL url = new URL("https://insurance-h5.oss-cn-hangzhou.aliyuncs.com/darling-app/qa/audio/123123123.mp3");
 //            connection = url.openConnection();
@@ -95,24 +124,18 @@ public class TestManager {
 //            AudioInputStream ais = AudioSystem.getAudioInputStream(url);
 //            clip.open(ais);
 //            System.out.println(clip.getMicrosecondLength() / 1000000D + "s");
-            File file = new File("https://insurance-h5.oss-cn-hangzhou.aliyuncs.com/darling-app/qa/audio/123123123.mp3");
-            System.setProperty("ffmpeg.home", "/usr/local/Cellar/ffmpeg/4.2.1_2/bin");
-            Encoder encoder = new Encoder();
-            MultimediaInfo info = encoder.getInfo(file);
-            long duration = info.getDuration();
-            System.out.println("音频时长为：" + duration / 1000 + "秒");
-            AudioInfo audio = info.getAudio();
-            int bitRate = audio.getBitRate();  // 比特率
-            int channels = audio.getChannels();  // 声道
-            String decoder = audio.getDecoder();  // 解码器
-            int sRate = audio.getSamplingRate();  // 采样率
-            System.out.println("解码器：" + decoder + "，声道：" + channels + "，比特率：" + bitRate + "，采样率：" + sRate);
-            System.out.println("报错");
-        } catch (InputFormatException e) {
-            e.printStackTrace();
-        } catch (EncoderException e) {
-            e.printStackTrace();
-        }
+//        File file = new File("https://insurance-h5.oss-cn-hangzhou.aliyuncs.com/darling-app/qa/audio/123123123.mp3");
+//        System.setProperty("ffmpeg.home", "/usr/local/Cellar/ffmpeg/4.2.1_2/bin");
+//            Encoder encoder = new Encoder();
+//            MultimediaInfo info = encoder.getInfo(file);
+//            long duration = info.getDuration();
+//            System.out.println("音频时长为：" + duration / 1000 + "秒");
+//            AudioInfo audio = info.getAudio();
+//            int bitRate = audio.getBitRate();  // 比特率
+//            int channels = audio.getChannels();  // 声道
+//            String decoder = audio.getDecoder();  // 解码器
+//            int sRate = audio.getSamplingRate();  // 采样率
+//            System.out.println("解码器：" + decoder + "，声道：" + channels + "，比特率：" + bitRate + "，采样率：" + sRate);
         return true;
     }
 //
