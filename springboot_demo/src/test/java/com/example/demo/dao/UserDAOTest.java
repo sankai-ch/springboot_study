@@ -26,7 +26,7 @@ public class UserDAOTest {
     @Test
     public void test() {
         TestDO testDO = new TestDO();
-        testDO.setIsTest(true);
-        testDO.getIsTest();
+//        testDO.setIsTest(true);
+//        testDO.getIsTest();
     }
 }

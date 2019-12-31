@@ -31,14 +31,14 @@ public class TestController {
         return testManager.findAll();
     }
 
-    @PostMapping("/upload")
-    @ApiOperation(value = "测试", notes = "可以记录测试类中需要记录的内容")
-    public Boolean upload(@RequestParam(required = false) MultipartFile file, @RequestParam("id") Long id) {
-        return testManager.upload(id, file);
-    }
-
-    @GetMapping("/ddd")
-    public RestCommonResult<Boolean> ddd() throws IOException {
-        return new RestCommonResult<>(testManager.ddd());
-    }
+//    @PostMapping("/upload")
+//    @ApiOperation(value = "测试", notes = "可以记录测试类中需要记录的内容")
+//    public Boolean upload(@RequestParam(required = false) MultipartFile file, @RequestParam("id") Long id) {
+////        return testManager.upload(id, file);
+//    }
+//
+//    @GetMapping("/ddd")
+//    public RestCommonResult<Boolean> ddd() throws IOException {
+//        return new RestCommonResult<>(testManager.ddd());
+//    }
 }

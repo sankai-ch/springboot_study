@@ -5,10 +5,6 @@ import com.example.demo.jpa.TestJpaDAO;
 import com.example.demo.mapper.TestMapper;
 import javafx.scene.media.AudioClip;
 import lombok.extern.slf4j.Slf4j;
-import lx.jave.AudioInfo;
-import lx.jave.Encoder;
-import lx.jave.EncoderException;
-import lx.jave.MultimediaInfo;
 import org.apache.el.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,48 +35,48 @@ public class TestManager {
         return testMapper.findAll();
 //        return testJpaDAO.findAll();
     }
-
-    public boolean upload(Long id, MultipartFile file) {
-        List<String> imageType = new ArrayList<>(Arrays.asList("jpg", "png", "jpeg", "bmp", "git"));
-        TestDO testDO = testJpaDAO.findAllById(id);
-        String fileName = file.getOriginalFilename();
-        System.out.println(fileName);
-        String fileSuffix = fileName.substring(fileName.lastIndexOf("."));//后缀名
-        //只有当满足图片格式，重新赋图片名
-        String filePath = "/Users/sankai/Documents/image/";
-        fileName = UUID.randomUUID() + fileSuffix;
-        String fileReplaceName = fileName.replaceAll("-", "");
-        File newFile = new File(filePath + fileReplaceName);
-        try {
-            if (!newFile.getParentFile().exists()) {
-                newFile.getParentFile().mkdir();
-            }
-            file.transferTo(newFile);
-            testDO.setFileName(fileReplaceName);
-            if (testDO.getCreateTime() == null) {
-                testDO.setCreateTime(new Date());
-            }
-            testDO.setUpdateTime(new Date());
-            testJpaDAO.save(testDO);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return true;
-    }
-
-    public boolean ddd() throws IOException {
-        Encoder encoder = new Encoder();
-        long ls = 0;
-        MultimediaInfo m;
-        try {
-            File source = new File("https://insurance-h5.oss-cn-hangzhou.aliyuncs.com/darling-app/qa/audio/123123123.mp3");
-            m = encoder.getInfo(source);
-            ls = m.getDuration()/1000;
-            System.out.println(ls);
-
-        } catch (Exception e) {
-            System.out.println("获取音频时长有误：" + e.getMessage());
-        }
+//
+//    public boolean upload(Long id, MultipartFile file) {
+//        List<String> imageType = new ArrayList<>(Arrays.asList("jpg", "png", "jpeg", "bmp", "git"));
+//        TestDO testDO = testJpaDAO.findAllById(id);
+//        String fileName = file.getOriginalFilename();
+//        System.out.println(fileName);
+//        String fileSuffix = fileName.substring(fileName.lastIndexOf("."));//后缀名
+//        //只有当满足图片格式，重新赋图片名
+//        String filePath = "/Users/sankai/Documents/image/";
+//        fileName = UUID.randomUUID() + fileSuffix;
+//        String fileReplaceName = fileName.replaceAll("-", "");
+//        File newFile = new File(filePath + fileReplaceName);
+//        try {
+//            if (!newFile.getParentFile().exists()) {
+//                newFile.getParentFile().mkdir();
+//            }
+//            file.transferTo(newFile);
+//            testDO.setFileName(fileReplaceName);
+//            if (testDO.getCreateTime() == null) {
+//                testDO.setCreateTime(new Date());
+//            }
+//            testDO.setUpdateTime(new Date());
+//            testJpaDAO.save(testDO);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return true;
+//    }
+//
+//    public boolean ddd() throws IOException {
+//        Encoder encoder = new Encoder();
+//        long ls = 0;
+//        MultimediaInfo m;
+//        try {
+//            File source = new File("https://insurance-h5.oss-cn-hangzhou.aliyuncs.com/darling-app/qa/audio/123123123.mp3");
+//            m = encoder.getInfo(source);
+//            ls = m.getDuration()/1000;
+//            System.out.println(ls);
+//
+//        } catch (Exception e) {
+//            System.out.println("获取音频时长有误：" + e.getMessage());
+//        }
 //        URL url = new URL("https://insurance-h5.oss-cn-hangzhou.aliyuncs.com/darling-app/qa/audio/123123123.mp3");
 //        HttpURLConnection urlcon = (HttpURLConnection) url.openConnection();
 //        // 根据响应获取文件大小
@@ -136,8 +132,8 @@ public class TestManager {
 //            String decoder = audio.getDecoder();  // 解码器
 //            int sRate = audio.getSamplingRate();  // 采样率
 //            System.out.println("解码器：" + decoder + "，声道：" + channels + "，比特率：" + bitRate + "，采样率：" + sRate);
-        return true;
-    }
+//        return true;
+//    }
 //
 //    public static File getFileByUrl(String url) throws UnknownHostException, IOException {
 //        File tmpFile = File.createTempFile("temp", ".tmp");//创建临时文件
