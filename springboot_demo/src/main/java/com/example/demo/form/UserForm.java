@@ -14,7 +14,7 @@ public class UserForm {
 
     @NotBlank
     @ApiModelProperty(value = "用户名", dataType = "String", required = true, example = "admin001")
-    private String name;
+    private String username;
 
     @NotBlank
     @ApiModelProperty(value = "用户密码", dataType = "String", required = true, example = "123123")

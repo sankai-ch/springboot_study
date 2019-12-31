@@ -20,7 +20,7 @@ import java.util.Date;
 
 @Entity
 @Data
-@Table(name = "t_user")
+@Table(name = "user")
 @DynamicInsert
 @DynamicUpdate
 @EntityListeners(AuditingEntityListener.class)
@@ -31,11 +31,9 @@ public class UserDO implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
+    private String username;
 
     private String password;
-
-    private String description;
 
     @CreatedDate
     @Column(name = "create_time")

@@ -60,7 +60,8 @@ public class LoginInterceptor implements HandlerInterceptor {
                 throw new BizCoreException("此接口需要登录", ErrorCode.APP_NEED_LOGIN);
             }
             //获取token中的userId
-            String userId;
+            String userId = null;
+            System.out.println("token: " + token);
             try {
                 userId = JWT.decode(token).getAudience().get(0);
             } catch (JWTDecodeException j) {
