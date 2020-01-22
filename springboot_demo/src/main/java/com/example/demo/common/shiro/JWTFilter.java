@@ -8,8 +8,13 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.*;
 import java.util.logging.Logger;
 
+/**
+ * @author SanKai
+ * @since 2019-12-30
+ */
 public class JWTFilter extends BasicHttpAuthenticationFilter {
 
     private final static String TOKEN = "Authorization";
@@ -41,6 +46,13 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
         return true;
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @param mappedValue
+     * @return
+     */
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
         if (isLoginAttempt(request, response)) {

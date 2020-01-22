@@ -11,18 +11,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
 
-import java.util.List;
-
 /**
  * @author SanKai
  * @since 2019-11-06
  */
-@Service
 @Slf4j
+@Service
 public class UserManager {
 
     @Autowired
     private UserJpaDAO userJpaDAO;
+
+    public UserDO getUserByUserName(String username) {
+        UserDO userDO = userJpaDAO.findByUsername(username);
+        return userDO;
+    }
 
     public Boolean createUser(UserForm form) {
         UserDO user = userJpaDAO.findByUsername(form.getUsername());

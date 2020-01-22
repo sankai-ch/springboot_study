@@ -2,34 +2,28 @@ package com.example.demo.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.common.annotation.PassToken;
-import com.example.demo.common.core.CommonRequestData;
 import com.example.demo.common.core.RestCommonResult;
 import com.example.demo.common.shiro.JWTUtil;
 import com.example.demo.dataobject.UserDO;
 import com.example.demo.form.UserForm;
 import com.example.demo.jpa.UserJpaDAO;
 import com.example.demo.manager.UserManager;
-import com.example.demo.service.TokenService;
 import io.swagger.annotations.ApiOperation;
-import org.apache.logging.log4j.LogManager;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.logging.Logger;
 
 /**
  * @author SanKai
  * @since 2019-11-06
  */
+
 @RestController
 @RequestMapping("/user/api")
 public class UserController {
-
-//    private static final Logger LOGGER = (Logger) LogManager.getLogger(UserController.class);
-    
 
     @Autowired
     private UserManager userManager;

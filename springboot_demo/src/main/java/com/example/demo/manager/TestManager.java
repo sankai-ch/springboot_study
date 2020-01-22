@@ -3,18 +3,10 @@ package com.example.demo.manager;
 import com.example.demo.dataobject.TestDO;
 import com.example.demo.jpa.TestJpaDAO;
 import com.example.demo.mapper.TestMapper;
-import javafx.scene.media.AudioClip;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.el.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.*;
 
 /**
@@ -25,7 +17,7 @@ import java.util.*;
 @Slf4j
 public class TestManager {
 
-    @Autowired(required = false)
+    @Autowired
     private TestMapper testMapper;
 
     @Autowired
