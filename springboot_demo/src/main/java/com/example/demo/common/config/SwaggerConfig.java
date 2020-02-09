@@ -3,6 +3,7 @@ package com.example.demo.common.config;
 import com.example.demo.common.core.CommonRequestData;
 import io.swagger.annotations.ApiModelProperty;
 import org.apache.commons.lang3.reflect.FieldUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -27,6 +28,9 @@ import java.util.List;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
+
+    @Value(value = "${spring.swagger2.enabled}")
+    private Boolean swaggerEnabled;
 
     @Bean
     public Docket restfulApi() {
@@ -60,7 +64,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("Swagger！Restful API")
                 .description("搭建Swagger")
-                .termsOfServiceUrl("")
+                .termsOfServiceUrl("https://study.162.com/provider/1016671292/index.htm")
                 .version("1.0")
                 .build();
     }

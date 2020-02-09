@@ -18,6 +18,12 @@ spring:
       hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
       hibernate.ddl-auto: none
     generate-ddl: true
+  swagger2:
+    enabled: true
+  mvc:
+    view:
+      prefix: /WEB-INF/pages/
+      suffix: .jsp
 server:
   port: 8088
 

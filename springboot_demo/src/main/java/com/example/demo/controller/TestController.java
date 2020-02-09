@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.common.core.RestCommonResult;
 import com.example.demo.dataobject.TestDO;
+import com.example.demo.entity.SaleGoods;
 import com.example.demo.manager.TestManager;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -19,26 +20,25 @@ import java.util.List;
  */
 @RestController
 @Api(value = "API - 测试Swagger")
-@RequestMapping("/api")
 public class TestController {
 
-    @Autowired
-    private TestManager testManager;
-
-    @GetMapping("/find")
-    @ApiOperation(value = "查看所有测试类", notes = "可以记录测试类中需要记录的内容")
-    public List<TestDO> findAll() {
-        return testManager.findAll();
+    @RequestMapping(value = "/get/httpmessageconverter", method = RequestMethod.GET)
+    public SaleGoods httpMessageConverterTest() {
+        SaleGoods saleGoods = new SaleGoods();
+        saleGoods.setGoodsName("华为手机");
+        saleGoods.setId(1);
+        saleGoods.setOnSale(true);
+        saleGoods.setType(1);
+        saleGoods.setWeight(300);
+        return saleGoods;
     }
 
-//    @PostMapping("/upload")
-//    @ApiOperation(value = "测试", notes = "可以记录测试类中需要记录的内容")
-//    public Boolean upload(@RequestParam(required = false) MultipartFile file, @RequestParam("id") Long id) {
-////        return testManager.upload(id, file);
-//    }
-//
-//    @GetMapping("/ddd")
-//    public RestCommonResult<Boolean> ddd() throws IOException {
-//        return new RestCommonResult<>(testManager.ddd());
-//    }
+    @RequestMapping(value = "/test/httpmessageconverter", method = RequestMethod.POST)
+    @ResponseBody
+    public SaleGoods httpMessageConverterTest2(@RequestBody SaleGoods saleGoods) {
+        System.out.println(saleGoods.toString());
+        saleGoods.setType(saleGoods.getType() + 1);
+        saleGoods.setGoodsName("商品名：" + saleGoods.getGoodsName());
+        return saleGoods;
+    }
 }
