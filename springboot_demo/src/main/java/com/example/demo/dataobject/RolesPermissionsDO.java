@@ -17,7 +17,7 @@ public class RolesPermissionsDO {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String  roleName;
+    private String roleName;
 
     private String permission;
 }

@@ -37,10 +37,11 @@ public class BizCoreException extends RuntimeException {
     /**
      * 构造方法
      */
-    public BizCoreException(ErrorCode code,String message) {
+    public BizCoreException(ErrorCode code, String message) {
         super(message);
         this.code = code;
     }
+
     /**
      * 构造方法
      */

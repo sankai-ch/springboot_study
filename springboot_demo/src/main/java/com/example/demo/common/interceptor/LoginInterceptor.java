@@ -54,7 +54,7 @@ public class LoginInterceptor implements HandlerInterceptor {
                 return true;
             }
         } else {
-            if (token == null) {
+            if (token == null || token.isEmpty()) {
                 throw new BizCoreException("此接口需要登录", ErrorCode.APP_NEED_LOGIN);
             }
             //获取token中的userId

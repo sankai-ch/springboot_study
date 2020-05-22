@@ -13,7 +13,6 @@ public enum ErrorCode {
     SUCCESS("000000", "success"),
 
 
-
     //无效参数
     INVALID_PARAM("100001", "invalid param"),
 
@@ -28,9 +27,9 @@ public enum ErrorCode {
     APP_SECRET_EXCEPTION("100004", "签名不对"),
     APP_NEED_LOGIN("100005", "需要登录"),
 
-    USER_NOT_EXIST("100006","用户不存在"),
+    USER_NOT_EXIST("100006", "用户不存在"),
 
-    USER_EXIST("100006","用户已存在"),
+    USER_EXIST("100006", "用户已存在"),
 
 
     ;
@@ -38,6 +37,7 @@ public enum ErrorCode {
     private String code;
 
     private String description;
+
     ErrorCode(String code, String description) {
         this.code = code;
         this.description = description;

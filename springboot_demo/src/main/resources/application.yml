@@ -1,0 +1,58 @@
+spring:
+  application:
+    name: Hello SpringBoot
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8
+    username: root
+    password: 123456
+  jackson:
+    serialization.write_dates_as_timestamps: false
+  session:
+    store-type: none
+  jpa:
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+      hibernate.type: trace
+      hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+      hibernate.ddl-auto: none
+    generate-ddl: true
+  swagger2:
+    enabled: true
+  mvc:
+    view:
+      prefix: /WEB-INF/pages/
+      suffix: .jsp
+  dubbo:
+    server: true
+    application:
+      name: dubboDemo
+      id: dubboDemo
+    registry:
+      protocol: zookeeper
+      address: N/A
+    protocol:
+      name: dubbo
+      port: 20880
+
+
+server:
+  port: 8088
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.example.demo.dataobject
+  check-config-location: true
+  config-location: classpath:mybatis/mybatis-config.xml
+
+logging:
+  level:
+    org.springframework.security:
+      - debug
+      - info
+    org.springframework.web: error
+    org.hibernate.SQL: debug
+    org.hibernate.engine.QueryParameters: debug
+    org.hibernate.engine.query.HQLQueryPlan: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace

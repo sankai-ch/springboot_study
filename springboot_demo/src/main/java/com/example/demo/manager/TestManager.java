@@ -17,6 +17,8 @@ import java.util.*;
 @Slf4j
 public class TestManager {
 
+    private String name = "abc";
+
     @Autowired
     private TestMapper testMapper;
 
@@ -164,4 +166,15 @@ public class TestManager {
 //
 //
 //    }
+
+
+    public static void main(String[] args) {
+        TestManager testManager = new TestManager();
+        TestManager testManagerB = new TestManager();
+        String result = testManager.equals(testManagerB) + ",";
+        result += testManager.name.equals(testManagerB.name) + ",";
+        result += testManager.name == testManagerB.name;
+        System.out.println(result);
+
+    }
 }

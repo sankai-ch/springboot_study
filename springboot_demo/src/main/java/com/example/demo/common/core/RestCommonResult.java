@@ -19,9 +19,9 @@ import java.util.Map;
 @Data
 public class RestCommonResult<T> implements Serializable {
 
-    public static final String FAIL     = "fail";
+    public static final String FAIL = "fail";
 
-    public static final String SUCCESS  = "success";
+    public static final String SUCCESS = "success";
 
     public static final String DEFAULT_SUCCESS_CODE = "000000";
 
@@ -35,13 +35,13 @@ public class RestCommonResult<T> implements Serializable {
 
     private List<?> errors;
 
-    public RestCommonResult(){
+    public RestCommonResult() {
         this.code = DEFAULT_SUCCESS_CODE;
         this.status = SUCCESS;
         this.errors = new ArrayList<>();
     }
 
-    public RestCommonResult(final T data){
+    public RestCommonResult(final T data) {
         this();
         this.data = data;
     }

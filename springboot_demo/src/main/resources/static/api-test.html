@@ -37,17 +37,17 @@
 <script src="https://cdn.staticfile.org/jquery/1.12.0/jquery.min.js"></script>
 <script type="text/javascript">
     function requestPostTest() {
-        var onSale=true;
+        var onSale = true;
         var id = $("#id").val();
         var goodsName = $("#goodsName").val();
         var weight = $("#weight").val();
         var type = $("#type").val();
         var goodsName = $("#goodsName").val();
         var onSaleValue = $("#onSale").val();
-        if(onSaleValue!=1){
-            onSale=false;
+        if (onSaleValue != 1) {
+            onSale = false;
         }
-        var data = {"id": id, "goodsName": goodsName,"weight":weight,"type":type,"onSale":onSale}
+        var data = {"id": id, "goodsName": goodsName, "weight": weight, "type": type, "onSale": onSale}
         $.ajax({
             type: "POST",//方法类型
             dataType: "json",//预期服务器返回的数据类型

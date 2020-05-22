@@ -34,7 +34,7 @@ public class JWTUtil {
             Algorithm algorithm = Algorithm.HMAC256(secret);
             //附带userName信息
             return JWT.create()
-                    .withClaim("username",username)
+                    .withClaim("username", username)
                     .withExpiresAt(date)
                     .sign(algorithm);
         } catch (UnsupportedEncodingException e) {

@@ -29,8 +29,8 @@ import java.util.List;
 @EnableSwagger2
 public class SwaggerConfig {
 
-    @Value(value = "${spring.swagger2.enabled}")
-    private Boolean swaggerEnabled;
+//    @Value(value = "${spring.swagger2.enabled}")
+//    private Boolean swaggerEnabled;
 
     @Bean
     public Docket restfulApi() {

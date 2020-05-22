@@ -85,14 +85,14 @@ public class CustomRealm extends AuthorizingRealm {
 
     private String getPasswordByUsername(String userName) {
         UserDO userDO = userJpaDAO.findByUsername(userName);
-        if (userDO != null){
+        if (userDO != null) {
             return userDO.getPassword();
         }
         return null;
     }
 
     public static void main(String[] args) {
-        Md5Hash md5Hash = new Md5Hash("123456","sankai");
+        Md5Hash md5Hash = new Md5Hash("123456", "sankai");
         System.out.println(md5Hash);
     }
 }

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 @Mapper
-public interface UserRoleJpaDAO extends JpaRepository<UserRoleDO,Long> {
+public interface UserRoleJpaDAO extends JpaRepository<UserRoleDO, Long> {
 
 //    @Query("select UserRoleDO.role_name from UserRoleDO where UserRoleDO.username = ?1")
 //    UserRoleDO getByName(String username);

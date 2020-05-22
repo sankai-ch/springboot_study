@@ -10,10 +10,10 @@ public class TokenProvider {
 
     private static final String LOGIN_TYPE_KEY = "login_type";
 
-    private String              secretKey;
+    private String secretKey;
 
-    private long                tokenValidityInSeconds;
+    private long tokenValidityInSeconds;
 
-    private long                tokenValidityInSecondsForRememberMe;
+    private long tokenValidityInSecondsForRememberMe;
 
 }

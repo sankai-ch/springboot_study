@@ -7,6 +7,7 @@
     </select>
 
     <insert id="create">
-        insert into student(name,file_name,create_time,update_time ) value(#{name},#(fileName),#(createTime),#(updateTime));
+        insert into student(name,file_name,create_time,update_time )
+        value(#{name},#(fileName),#(createTime),#(updateTime));
     </insert>
 </mapper>
